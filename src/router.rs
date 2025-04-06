@@ -2,13 +2,12 @@ use anyhow::Context;
 use axum::{
     body::Body,
     http::{HeaderValue, Request, StatusCode},
-    response::{IntoResponse, Response},
+    response::IntoResponse,
     routing::get,
-    Extension, Json, Router,
+    Extension, Router,
 };
 use http::HeaderName;
 use reqwest::Method;
-use serde_json::json;
 use std::net::SocketAddr;
 use tower_http::cors::CorsLayer;
 
@@ -16,22 +15,12 @@ use crate::{auth, Ctx};
 
 const PORT: u16 = 4042;
 
-pub async fn api() -> Response {
-    Json(json!({
-        "endpoint": "api.dawninternet.com",
-        "version": env!("CARGO_PKG_VERSION"),
-    }))
-    .into_response()
-}
-
 pub async fn health() -> &'static str {
     "OK"
 }
 
 pub fn main_router() -> Router {
     Router::new()
-        // Main route
-        .route("/", get(api))
         // Health check
         .route("/health", get(health))
 }
@@ -50,7 +39,7 @@ pub fn app(ctx: Ctx) -> Router {
                 .allow_methods(vec![Method::GET, Method::POST])
                 .allow_headers(vec![
                     http::header::CONTENT_TYPE,
-                    HeaderName::from_static("x-privy-token"),
+                    HeaderName::from_static("x-token"),
                 ])
                 .allow_credentials(true),
         )

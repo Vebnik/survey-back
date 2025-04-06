@@ -7,12 +7,6 @@ fn get_env(key: &str) -> String {
         .unwrap()
 }
 
-fn get_env_default(key: &str, default: &str) -> String {
-    let default: Result<String, ()> = Ok(String::from(default));
-
-    dotenvy::var(key).or(default).unwrap()
-}
-
 #[derive(Debug, Clone)]
 pub struct Secrets {
     pub db_url: Arc<String>,

@@ -1,0 +1,38 @@
+{
+  "db_name": "SQLite",
+  "query": "\n                INSERT INTO \"user\" (\"id\", \"email\") VALUES ($1, $2)\n                RETURNING *\n            ",
+  "describe": {
+    "columns": [
+      {
+        "name": "id",
+        "ordinal": 0,
+        "type_info": "Text"
+      },
+      {
+        "name": "email",
+        "ordinal": 1,
+        "type_info": "Text"
+      },
+      {
+        "name": "created_at",
+        "ordinal": 2,
+        "type_info": "Text"
+      },
+      {
+        "name": "updated_at",
+        "ordinal": 3,
+        "type_info": "Text"
+      }
+    ],
+    "parameters": {
+      "Right": 2
+    },
+    "nullable": [
+      false,
+      false,
+      false,
+      false
+    ]
+  },
+  "hash": "23783306d1a73c68ed9389f8bb09cf1a451a678fa37597d31b344afaffd0f170"
+}
