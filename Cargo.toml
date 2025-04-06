@@ -1,0 +1,43 @@
+[package]
+name = "survey-api"
+version = "0.1.0"
+edition = "2021"
+
+[[bin]]
+name = "survey"
+path = "src/main.rs"
+
+[dependencies]
+anyhow = "1.0.94"
+axum = { version = "0.7.9", features = ["ws", "tokio", "multipart"] }
+axum-extra = { version = "0.9.6", features = ["cookie"] }
+chrono = "0.4.39"
+dotenvy = "0.15.7"
+env_logger = "0.11.5"
+futures = "0.3.31"
+futures-util = "0.3.31"
+log = "0.4.22"
+rand = "0.8.5"
+serde = "1.0.216"
+serde_json = "1.0.133"
+serde_with = { version = "3.11.0", features = ["chrono_0_4"] }
+sqlx = { version = "0.8.2", features = [
+    "runtime-tokio-rustls",
+    "postgres",
+    "sqlite",
+    "chrono",
+    "uuid",
+    "bigdecimal",
+] }
+thiserror = "2.0.9"
+tokio = { version = "1.42.0", features = [
+    "rt-multi-thread",
+    "macros",
+    "test-util",
+] }
+tower-http = { version = "0.6.2", features = ["cors", "fs"] }
+uuid = { version = "1.11.0", features = ["serde", "v4"] }
+validator = { version = "0.19.0", features = ["derive"] }
+reqwest = { version = "0.12.11", features = ["json"] }
+jsonwebtoken = "9.3.0"
+http = "1.2.0"
