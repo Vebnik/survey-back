@@ -19,15 +19,16 @@ impl User {
     }
 
     #[allow(dead_code)]
-    pub async fn create(db: Db, email: &str, id: &str) -> Result<Self> {
+    pub async fn create(db: Db, email: &str, id: &str, password: &str) -> Result<Self> {
         sqlx::query_as!(
             User,
             r#"
-                INSERT INTO "user" ("id", "email") VALUES ($1, $2)
+                INSERT INTO "user" ("id", "email", "password") VALUES ($1, $2, $3)
                 RETURNING *
             "#,
             id,
             email,
+            password,
         )
         .fetch_one(db.as_ref())
         .await
