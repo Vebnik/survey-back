@@ -8,6 +8,7 @@ mod error;
 mod router;
 mod types;
 mod user;
+mod answer;
 
 pub use error::*;
 pub use types::{Ctx, Db};

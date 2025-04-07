@@ -11,7 +11,7 @@ use reqwest::Method;
 use std::net::SocketAddr;
 use tower_http::cors::CorsLayer;
 
-use crate::{auth, Ctx};
+use crate::{auth, answer, Ctx};
 
 const PORT: u16 = 4042;
 
@@ -31,6 +31,7 @@ pub fn app(ctx: Ctx) -> Router {
     Router::new()
         .merge(main_router())
         .merge(auth::router())
+        .merge(answer::router())
         .fallback(fallback)
         .layer(Extension(ctx))
         .layer(
