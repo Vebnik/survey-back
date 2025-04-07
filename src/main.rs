@@ -2,13 +2,13 @@ use anyhow::Context;
 use sqlx::sqlite::SqlitePoolOptions;
 use std::{env, sync::Arc};
 
+mod answer;
 mod auth;
 mod config;
 mod error;
 mod router;
 mod types;
 mod user;
-mod answer;
 
 pub use error::*;
 pub use types::{Ctx, Db};

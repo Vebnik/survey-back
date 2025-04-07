@@ -26,7 +26,8 @@ pub async fn auth(
         return Err(Error::UserNotFound);
     }
 
-    let key: EncodingKey = EncodingKey::from_rsa_pem(ctx.config.secrets.jwt_private_key.as_ref()).unwrap();
+    let key: EncodingKey =
+        EncodingKey::from_rsa_pem(ctx.config.secrets.jwt_private_key.as_ref()).unwrap();
     let mut header = Header::new(Algorithm::RS256);
     header.kid = Some("test".to_string());
 

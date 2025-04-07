@@ -11,7 +11,7 @@ use reqwest::Method;
 use std::net::SocketAddr;
 use tower_http::cors::CorsLayer;
 
-use crate::{auth, answer, Ctx};
+use crate::{answer, auth, Ctx};
 
 const PORT: u16 = 4042;
 

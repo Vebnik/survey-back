@@ -14,20 +14,26 @@
         "type_info": "Text"
       },
       {
-        "name": "created_at",
+        "name": "password",
         "ordinal": 2,
         "type_info": "Text"
       },
       {
-        "name": "updated_at",
+        "name": "created_at",
         "ordinal": 3,
-        "type_info": "Text"
+        "type_info": "Datetime"
+      },
+      {
+        "name": "updated_at",
+        "ordinal": 4,
+        "type_info": "Datetime"
       }
     ],
     "parameters": {
       "Right": 1
     },
     "nullable": [
+      false,
       false,
       false,
       false,

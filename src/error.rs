@@ -103,9 +103,13 @@ impl Error {
         use Error::*;
 
         match self {
-            InternalError | Sqlx(_) | Anyhow(_) | TaskError(_) | HttpError(_) => StatusCode::INTERNAL_SERVER_ERROR,
+            InternalError | Sqlx(_) | Anyhow(_) | TaskError(_) | HttpError(_) => {
+                StatusCode::INTERNAL_SERVER_ERROR
+            }
             InvalidEntity(_) => StatusCode::UNPROCESSABLE_ENTITY,
-            NoCookies | InvalidToken | Unauthorized | TokenExpired | TokenCannotBeUsedYet => StatusCode::UNAUTHORIZED,
+            NoCookies | InvalidToken | Unauthorized | TokenExpired | TokenCannotBeUsedYet => {
+                StatusCode::UNAUTHORIZED
+            }
             RedirectNotAllowed | JwkParse | Uuid(_) | SerdeJson(_) => StatusCode::BAD_REQUEST,
             UserNotFound => StatusCode::NOT_FOUND,
         }

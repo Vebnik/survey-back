@@ -1,6 +1,6 @@
 {
   "db_name": "SQLite",
-  "query": "SELECT * FROM \"user\" WHERE \"id\" = $1",
+  "query": "\n                INSERT INTO \"submit_answer\" (\"id\", \"date\", \"questions\", \"satisfied\")\n                VALUES ($1, $2, $3, $4)\n                RETURNING *\n            ",
   "describe": {
     "columns": [
       {
@@ -9,30 +9,36 @@
         "type_info": "Text"
       },
       {
-        "name": "email",
+        "name": "date",
         "ordinal": 1,
         "type_info": "Text"
       },
       {
-        "name": "password",
+        "name": "questions",
         "ordinal": 2,
         "type_info": "Text"
       },
       {
-        "name": "created_at",
+        "name": "satisfied",
         "ordinal": 3,
+        "type_info": "Text"
+      },
+      {
+        "name": "created_at",
+        "ordinal": 4,
         "type_info": "Datetime"
       },
       {
         "name": "updated_at",
-        "ordinal": 4,
+        "ordinal": 5,
         "type_info": "Datetime"
       }
     ],
     "parameters": {
-      "Right": 1
+      "Right": 4
     },
     "nullable": [
+      false,
       false,
       false,
       false,
@@ -40,5 +46,5 @@
       false
     ]
   },
-  "hash": "ceb0f5bd560f2d07f47bce905d9cc21a8d5a60917ed651d9876e269d4a771af6"
+  "hash": "4932f75d7204d075430a3e09a9b75fe0fb62e05bae0179bf80a50f304936de51"
 }

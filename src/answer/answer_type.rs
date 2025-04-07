@@ -21,7 +21,6 @@ pub struct SubmitPayload {
     pub satisfied: String,
 }
 
-
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct SubmitAnswer {
     pub id: String,

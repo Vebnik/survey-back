@@ -41,8 +41,8 @@ impl Config {
             front_url: Arc::new(get_env("FRONT_URL")),
             secrets: Arc::new(Secrets {
                 db_url: Arc::new(get_env("DATABASE_URL")),
-                jwt_private_key: Arc::new(jwt_private_key.clone()),
-                jwt_public_key: Arc::new(jwt_public_key.clone()),
+                jwt_private_key: Arc::new(*jwt_private_key),
+                jwt_public_key: Arc::new(*jwt_public_key),
             }),
             constants: Arc::new(Constants {}),
         }
