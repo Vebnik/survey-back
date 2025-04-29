@@ -2,7 +2,6 @@ create table "submit_answer"
 (   id              text            not null unique,
 
     date            text            not null,
-    questions       text            not null,
     satisfied       text            not null,
 
     created_at      datetime        not null default CURRENT_TIMESTAMP,

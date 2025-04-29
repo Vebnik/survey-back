@@ -3,15 +3,15 @@ use serde::{Deserialize, Serialize};
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct Answers {
-    after_six_months: String,
-    before_surgery: String,
+    pub after_six_months: String,
+    pub before_surgery: String,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct Question {
-    id: i32,
-    question: String,
-    answers: Answers,
+    pub id: i32,
+    pub question: String,
+    pub answers: Answers,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -22,11 +22,40 @@ pub struct SubmitPayload {
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct StatisticDatePayload {
+    pub from: String,
+    pub to: String,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct StatisticPayload {
+    pub date: StatisticDatePayload,
+}
+
+#[allow(dead_code)]
+pub struct SubmitQuestionPayload {
+    pub submit_answer_id: String,
+    pub question: String,
+    pub after_six_months: String,
+    pub before_surgery: String,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct SubmitQuestion {
+    pub id: String,
+
+    pub submit_answer_id: String,
+
+    pub question: String,
+    pub after_six_months: String,
+    pub before_surgery: String,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct SubmitAnswer {
     pub id: String,
 
     pub date: String,
-    pub questions: String,
     pub satisfied: String,
 
     pub created_at: NaiveDateTime,

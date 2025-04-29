@@ -7,7 +7,7 @@ use axum::{
 use serde_json::json;
 
 use crate::{
-    answer::{Question, SubmitAnswer, SubmitPayload},
+    answer::{SubmitAnswer, SubmitPayload, SubmitQuestion},
     Ctx, Result,
 };
 
@@ -15,10 +15,11 @@ pub async fn submit(
     Extension(ctx): Extension<Ctx>,
     extract::Json(payload): extract::Json<SubmitPayload>,
 ) -> Result<Response> {
-    let submit_answer = SubmitAnswer::create(ctx.db.clone(), payload).await?;
-    let questions = serde_json::from_str::<Vec<Question>>(&submit_answer.questions)?;
+    let submit_answer = SubmitAnswer::create(ctx.db.clone(), payload.clone()).await?;
 
-    log::debug!("{questions:#?}");
+    for question in payload.questions {
+        SubmitQuestion::create(ctx.db.clone(), question, &submit_answer.id).await?;
+    }
 
     Ok((StatusCode::OK, Json(json!(submit_answer))).into_response())
 }

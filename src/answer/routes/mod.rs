@@ -1,5 +1,5 @@
-mod statustic;
+mod statistic;
 mod submit;
 
-pub use statustic::*;
+pub use statistic::*;
 pub use submit::*;
